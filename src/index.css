@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-accent: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-anton: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-georgia: Georgia, serif;
+
+  --color-page-bg: var(--page-bg);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border);
+  --color-text-primary: var(--text-primary);
+  --color-text-body: var(--text-body);
+  --color-text-meta: var(--text-meta);
+  --color-accent: var(--accent);
+  --color-accent-tint: var(--accent-tint);
+  --color-white: #FFFFFF;
+  --color-navy: #0F1A2A;
+
+  --radius-table-card: 14px;
+  --radius-ui-element: 8px;
+  --radius-role-tag: 4px;
+  --radius-avatar: 999px;
+
+  --shadow-theme: var(--theme-shadow);
+}
+
+:root {
+  --page-bg: #F4F5F7;
+  --surface: #FFFFFF;
+  --surface-elevated: #F4F5F7;
+  --border: #EEF0F3;
+  --text-primary: #0F1A2A;
+  --text-body: #6B7280;
+  --text-meta: #8A94A6;
+  --accent: #db4001;
+  --accent-tint: #FFF3EC;
+  --theme-shadow: 0 4px 16px rgba(15, 26, 42, 0.04);
+}
+
+.dark {
+  --page-bg: #0B1421;
+  --surface: #141C2B;
+  --surface-elevated: #1E2A3F;
+  --border: #26334A;
+  --text-primary: #F4F5F7;
+  --text-body: #B9C1CC;
+  --text-meta: #8896AC;
+  --accent: #db4001;
+  --accent-tint: #3A1E10;
+  --theme-shadow: 0 4px 16px rgba(0, 0, 0, 0.40);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-page-bg text-text-primary font-sans antialiased transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  .hover-fill-orange {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hover-fill-orange::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #db4001;
+    transition: left 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: -1;
+  }
+
+  .hover-fill-orange:hover::before {
+    left: 0;
+  }
+
+  .hover-fill-orange:hover {
+    @apply text-white;
+  }
+}
